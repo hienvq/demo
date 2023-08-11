@@ -1,0 +1,11 @@
+.ProductPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .ActionBox {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
