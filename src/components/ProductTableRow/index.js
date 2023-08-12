@@ -19,9 +19,12 @@ import {
 } from "@mui/material";
 import ProductApi from "../../apis/ProductApi";
 import EditIcon from "@mui/icons-material/Edit";
+import CreateProductModal from "../CreateProductModal";
+import DisplayModalContext from "../../contexts/DisplayModalContext";
 const ProductTableRow = (props) => {
   const [open, setOpen] = React.useState(false);
-
+  const { isOpenModal, setIsOpenModal, handleCloseModal, productDataModal, setProductDataModal } =
+    React.useContext(DisplayModalContext);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -32,6 +35,10 @@ const ProductTableRow = (props) => {
   const remove = async (id) => {
     await ProductApi.remove(id);
     props.refetch();
+  };
+  const handleEdit = () => {
+    setProductDataModal(props);
+    setIsOpenModal(true);
   };
   return (
     <>
@@ -57,6 +64,9 @@ const ProductTableRow = (props) => {
         <TableCell align="left">{props.price}</TableCell>
         <TableCell align="left">{props.description}</TableCell>
         <TableCell align="right">
+          <IconButton onClick={handleEdit}>
+            <EditIcon />
+          </IconButton>
           <IconButton onClick={handleClickOpen}>
             <DeleteIcon />
           </IconButton>
