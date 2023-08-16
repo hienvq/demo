@@ -16,6 +16,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import { Button } from "@mui/material";
 import { MENU } from "../../routes/constants";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { ToastMessage } from "../../components/ToastMessage";
 
 const drawerWidth = 300;
 
@@ -62,7 +63,6 @@ export default function AdminLayout({ children }) {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
         {children}
-        <Outlet />
       </Box>
     </Box>
   );

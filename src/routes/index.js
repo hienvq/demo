@@ -2,6 +2,7 @@ import { Navigate, Outlet, Route, RouterProvider, Routes, createBrowserRouter } 
 import PrivateComponent from "../components/PrivateComponent/PrivateComponent";
 import ProductPage from "../pages/Product";
 import Login from "../pages/Login";
+import { CategoryPage } from "../pages/Category";
 const router = createBrowserRouter([
   {
     path: "/login",
@@ -11,16 +12,20 @@ const router = createBrowserRouter([
     path: "/admin",
     children: [
       {
-        index: true,
-        element: <Navigate to="/admin/product" replace />,
+        path: "",
+        element: <PrivateComponent component={() => <h1>abc</h1>} />,
       },
+      // {
+      //   index: true,
+      //   element: <Navigate to="/admin/product" replace />,
+      // },
       {
         path: "product",
         element: <PrivateComponent component={ProductPage} />,
       },
       {
         path: "category",
-        element: <PrivateComponent component={() => <h1>abc</h1>} />,
+        element: <PrivateComponent component={CategoryPage} />,
       },
     ],
   },
